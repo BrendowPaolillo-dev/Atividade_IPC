@@ -1,4 +1,9 @@
 /*------------------------------------------------------------------------
+
+    Autores: Brendow e Higor
+    Data: 04/11/2019
+
+	
  * Programa:
  *    Quemeusou_cliente - Cliente do jogo 'Quem eu sou?'
  *
@@ -53,8 +58,8 @@ int main(int argc, char *argv[]) {
 	} //if
 
 	/* verifica se o endere�o do servidor foi fornecido */
-	if (argc > 1) host = argv[1];
-	else host = IP_SERVER;
+	//if (argc > 1) host = argv[1];
+	host = IP_SERVER;
 
 	/* testa a validade do endereco */
 	ptrh = gethostbyname(host);
@@ -101,8 +106,15 @@ int main(int argc, char *argv[]) {
 	printf("Aperte Enter para ver o tema\n->Enquanto nao receber a resposta da sua pergunta,\n-->Enter para atualizar o chat");
 	printf("\n Quando receber a resposta da sua pergunta, eh sua vez novamente.\n\n");
 	//send (sd, "Iniciar.", sizeof (buffer), 0); 
-	char oldbuf[MAX_BUFFER];
+	//char oldbuf[MAX_BUFFER];
+	//int recve = 0;
+	//recv (sd, buffer, sizeof (buffer), 0);
+	//printf("tema: %s\n",buffer);
 	while (1) {
+		//printf("Esperando sua vez!");
+		//printf("tamanho recebdio %d\n", recv (sd, buffer, sizeof (buffer), 0)); /* recebe dados */
+		//recv (sd, buffer, sizeof (buffer), 0);
+		//printf("tema: %s\n",buffer);
 		printf("Faca uma pergunta ou tentativa: ");
 		gets(buffer);
 
@@ -110,11 +122,15 @@ int main(int argc, char *argv[]) {
 		send (sd, buffer, sizeof (buffer), 0); /* envia dados */
 
 		if (strcmp(buffer, "sair") == 0) break;
-		
-		recv (sd, buffer, sizeof (buffer), 0); /* recebe dados */
+		//while(!recve){
+
+		//printf("%d",recve);
+		//}
+		recv (sd, buffer, sizeof (buffer), 0);
 		if(sizeof(buffer) > 0){
 			printf ("%s\n", buffer);
 		}
+
 
 	} //while
 

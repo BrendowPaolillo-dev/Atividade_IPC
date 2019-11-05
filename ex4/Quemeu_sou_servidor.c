@@ -1,4 +1,9 @@
+
 /*------------------------------------------------------------------------
+    Autores: Brendow e Higor
+    Data: 04/11/2019
+
+
  * Programa:
  *    Quemeusou_servidor - Servidor Quem eu sou
  *
@@ -139,6 +144,9 @@ int main(int argc, char *argv[]) {
 
 		int contturn = 0;
 		while (1) {
+			//printf("enviarndo %d\n", contturn);
+			//send (players[contturn], buffer, sizeof (buffer), 0); 
+			//printf("recebendo %d\n", contturn);
 			recv (players[contturn], buffer, sizeof (buffer), 0); /* recebe dados */
 			if(strcmp(buffer,nome) == 0){ // checa se a tentativa do player corresponde ao nome do personagem
 				send (players[contturn], "Voce ganhou!\n", sizeof (buffer), 0);
